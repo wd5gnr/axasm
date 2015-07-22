@@ -1,0 +1,6 @@
+	ORG 0
+	CLRF PORTA
+	GOTO 0
+	END
+	
+	

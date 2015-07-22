@@ -1,0 +1,33 @@
+##define TOS 0xFFF
+	
+	ORG 0
+top:	ZERO I
+	MOV F(FCON,FCON_10),F(FLOOP,FLOOP_IEND)
+	MOVIQ loop  		; assume loop<max
+	MOV FIMMV,F(FLOOP,FLOOP_IADD)
+loop:	
+	##include test.inc
+	MOV I,F(FIO,FIO_DISP)	
+	MOV F(FIO,FIO_SW),FACC
+	MOV F(FCON,FCON_10),F(FACC,FACC_SHL)
+	MOV FACC,F(FIO,FIO_DELAY)
+	MOV F(FIO,FIO_DELAY),0
+	MOV F(FLOOP,FLOOP_IADD),FPC
+	MOVIQ top
+	MOV FIMMV,FPC
+	END
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

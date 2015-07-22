@@ -1,0 +1,21 @@
+	ORG 0
+	;;  set memory[0]=ff and memory[1]=ff00
+	MOV FCON_ff,FMEM_VALUE0POST
+	MOV FCON_ff00,FMEM_VALUE0POST
+top:	MOV FZERO,FMEM_MP1 ; zero pointer
+	MOV FCON_1,FIO_LED   ;1->LED
+	MOV FMEM_VALUE1POST,FIO_DISP ; display memory[0]
+	CALL delay
+	MOV FCON_80,FIO_LED ; 80->led
+	MOV FMEM_VALUE1POST,FIO_DISP ; display memory[1]
+	CALL delay
+	JMP top
+delay:	
+	PUSH FACC
+	MOV FIO_SW,FACC
+        MOV FCON_10,FACC_SHL
+	MOV FACC,FIO_DELAY
+	MOV FIO_DELAY,FCON
+	POP FACC
+	RET	
+	END
