@@ -37,7 +37,7 @@
 #define MOVR0I(N) DB(0xD00|(((N)&0xFF)))
 #define MOVPCNN(N) DB(0xE00|(((N)&0xFF)))
 #define JRI(N) DB(0xF00|(((N)&0xFF)))
-#define JR(L) { int off=(L)-_solo_add+1; DB(0xF00|off & 0xFF); }
+#define JR(L) { int off=(L)-(_solo_add+1); DB(0xF00|off & 0xFF); }
 #define CP(N) DB(NIB(N))
 #define ADDI(N) DB(0x10|NIB(N))
 #define INC(Y) DB(0x20|NIB(Y))
