@@ -55,6 +55,15 @@
 #define RET(N) DB(0xE0|NIB(N))
 #define SKIP(M) DB(0xF0|NIB(M))
 
+// Synthetic instructions
+#define RLC(X,Y) { MOV(X,Y); ADC(X,Y); }
+#define SL(X,Y) { MOV(X,Y); ADD(X,Y); }
+#define LSR(Y) { ANDI(0,1); RRC(Y); }   // is that right?
+#define CPL(X,Y) { MVI(X,0xF); SUB(X,Y); }
+#define NEG(RX,RY) { MVI(X,0); SUB(X,Y); }
+#define NOP	   MOV(0,0)
+
+
 
 #define R0 0
 #define R1 1
